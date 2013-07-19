@@ -39,8 +39,8 @@ CACHES = {
 
 # Put your pull-request plugins here
 AUTO_PULL_REQUEST_PLUGINS = [
-    'extras.management.auto_pull_request.plugins.basic_info.BasicInfoPlugin',
-    'extras.management.auto_pull_request.plugins.timings_info.TimingPlugin',
-    'extras.management.auto_pull_request.plugins.pep8_info.Pep8Plugin',
-    'extras.management.auto_pull_request.plugins.migrations_info.MigrationsInfoPlugin',
+    'auto_pull_request.plugins.basic_info.BasicInfoPlugin',
+    'auto_pull_request.plugins.timings_info.TimingPlugin',
+    'auto_pull_request.plugins.pep8_info.Pep8Plugin',
+    'auto_pull_request.plugins.migrations_info.MigrationsInfoPlugin',
 ]
