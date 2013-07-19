@@ -1,0 +1,46 @@
+# coding=utf-8
+"""Timings settings"""
+from settings import *
+
+
+INSTALLED_APPS += (
+    "debug_toolbar",
+    "memcache_toolbar",
+)
+DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.signals.SignalDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+    'redis_panel.RedisPanel',
+    'memcache_toolbar.panels.pylibmc.PylibmcPanel',
+)
+INTERNAL_IPS = ('127.0.0.1',)
+MIDDLEWARE_CLASSES += (
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ("extras.patchers.debug_toolbar_memcached_panel_middleware"
+        ".DebugToolbarMemcachedPanelMiddleware"),
+    ("extras.patchers.debug_toolbar_redis_panel_middleware"
+        ".DebugToolbarRedisPanelMiddleware"),
+)
+CACHES = {
+    'default': {
+        'BACKEND': 'infinite_memcached.PyLibMCInfiniteCache',
+        'PREFIX': 'www',
+        'LOCATION': ['localhost:11211']
+    },
+}
+
+# Put your pull-request plugins here
+AUTO_PULL_REQUEST_PLUGINS = [
+    'extras.management.auto_pull_request.plugins.basic_info.BasicInfoPlugin',
+    'extras.management.auto_pull_request.plugins.timings_info.TimingPlugin',
+    'extras.management.auto_pull_request.plugins.pep8_info.Pep8Plugin',
+    'extras.management.auto_pull_request.plugins.migrations_info.MigrationsInfoPlugin',
+]
