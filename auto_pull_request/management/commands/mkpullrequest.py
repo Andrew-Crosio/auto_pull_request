@@ -5,7 +5,7 @@ import sys
 from django.core.management.base import NoArgsCommand
 
 from timing_settings import AUTO_PULL_REQUEST_PLUGINS
-from ..plugins.collector import PluginCollector
+from ...plugins.collector import PluginCollector
 
 
 class Command(NoArgsCommand):
