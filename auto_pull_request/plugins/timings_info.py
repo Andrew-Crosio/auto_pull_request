@@ -60,14 +60,14 @@ class TimingPlugin(AutoPullRequestPluginInterface):
         print 'Gathering data for timings part 1 of 2...'
         with BackgroundServer():
             for page in pages:
-                pages_timings[page]['before'] = self._get_page_timings_data(page)
+                pages_timings[page]['after'] = self._get_page_timings_data(page)
 
         print
         print 'Gathering data for timings part 2 of 2...'
         with set_branch(self.repo, MASTER_BRANCH, stash=True):
             with BackgroundServer():
                 for page in pages:
-                    pages_timings[page]['after'] = self._get_page_timings_data(page)
+                    pages_timings[page]['before'] = self._get_page_timings_data(page)
 
         print
         page_timings_info = []
