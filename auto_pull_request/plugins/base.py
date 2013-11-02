@@ -3,7 +3,7 @@
 import abc
 import types
 
-from ..nodes import SectionNode, NodeList
+from ..nodes import SectionNode
 
 
 DEFAULT_ORDERING_POSITION = 1

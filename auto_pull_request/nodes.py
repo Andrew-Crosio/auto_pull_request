@@ -71,7 +71,7 @@ class NodeList(Node):
         self.nodes = nodes
 
     def get_text(self):
-        return '\n'.join(node.get_text() for node in self.nodes)
+        return '\n\n'.join(node.get_text() for node in self.nodes)
 
 
 class NumberedList(NodeList):

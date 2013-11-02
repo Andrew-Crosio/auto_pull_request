@@ -17,4 +17,5 @@ setup(name='auto_pull_request',
           'Django',
           'pep8',
           'lxml'
+          'django-debug-toolbar>=0.8.4'
       ])
