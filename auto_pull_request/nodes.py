@@ -58,7 +58,7 @@ class HeaderNode(TextNode):
         super(HeaderNode, self).__init__(text)
 
     def get_text(self):
-        return '%s %s' % ('#' * self.level, super(HeaderNode, self).get_text())
+        return '\n%s %s' % ('#' * self.level, super(HeaderNode, self).get_text())
 
 
 class BulletPointNode(TextNode):
@@ -71,7 +71,7 @@ class NodeList(Node):
         self.nodes = nodes
 
     def get_text(self):
-        return '\n\n'.join(node.get_text() for node in self.nodes)
+        return '\n'.join(node.get_text() for node in self.nodes)
 
 
 class NumberedList(NodeList):
