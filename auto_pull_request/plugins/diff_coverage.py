@@ -43,7 +43,6 @@ class DiffCoveragePlugin(AutoPullRequestPluginInterface):
 
         commands = test_command.split(';')
         for command in commands:
-            command = command.split(' ')
             subprocess.call(command, shell=True)
 
     def _get_diff_coverage(self):
