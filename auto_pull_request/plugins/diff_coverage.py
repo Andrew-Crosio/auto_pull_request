@@ -4,15 +4,15 @@ from contextlib import contextmanager
 from contextlib import closing
 from StringIO import StringIO
 import subprocess
+import sys
 
 from diffcoverage.diff_coverage import diff_coverage
-from django.conf import settings
 from git import Repo
 
 from . import MASTER_BRANCH
-import sys
 from .base import AutoPullRequestPluginInterface, section_order
 from ..nodes import CodeNode
+import timing_settings
 
 
 TEMPORARY_DIFF_LOCATION = '/tmp/temp.diff'
@@ -37,14 +37,14 @@ class DiffCoveragePlugin(AutoPullRequestPluginInterface):
 
     def _gather_test_coverage(self):
         try:
-            test_command = settings.AUTO_PULL_REQUEST_TEST_COMMAND
+            test_command = timing_settings.AUTO_PULL_REQUEST_TEST_COMMAND
         except AttributeError:
             test_command = 'nosetests --with-coverage --cover-branches'
 
         commands = test_command.split(';')
         for command in commands:
             command = command.split(' ')
-            subprocess.call(command)
+            subprocess.call(command, shell=True)
 
     def _get_diff_coverage(self):
         with self._capture_stdout() as buffer:
