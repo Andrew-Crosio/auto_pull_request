@@ -47,7 +47,7 @@ class BoldNode(TextNode):
 
 class CodeNode(TextNode):
     def get_text(self):
-        return '```%s```' % super(CodeNode, self).get_text()
+        return '```\n%s\n```' % super(CodeNode, self).get_text()
 
 
 class HeaderNode(TextNode):
