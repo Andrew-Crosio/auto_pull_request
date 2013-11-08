@@ -21,6 +21,6 @@ setup(
         'django-debug-toolbar>=0.8.4',
     ],
     dependency_links=[
-        'git://github.com/Andrew-Crosio/diff-coverage.git#egg=diffcoverage'
+        'https://github.com/Andrew-Crosio/diff-coverage/tarball/master#egg=diffcoverage'
     ]
 )
